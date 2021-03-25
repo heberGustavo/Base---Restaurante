@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Restaurante Come Bem</title>
+    <link href="~/css/MaterialDesign/material-kit.css?v=2.0.4" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <div class="vertical-nav bg-white" id="sidebar">
+            <div class="py-4 px-3 mb-2 bg-dark">
+                <div class="media d-flex align-items-center">
+                    <a asp-controller="Perfil" asp-action="Index" class="w-100 text-center">
+                        <img id="img_perfil_usuario" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                        <div class="media-body">
+                            <h4 class="m-0 font-weight-bold">Heber Gustavo</h4>
+                            <p class="font-weight-light mb-0">Administrador</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <ul class="nav flex-column bg-white mb-0">
+                <li class="nav-item active">
+                    <a asp-controller="Home" asp-action="Index" class="nav-link text-dark">
+                        <span class="material-icons mr-3 text-primary">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="material-icons mr-3 text-primary">add_shopping_cart</span>
+                        Mesas
+                    </a>
+                    <div class="dropdown-menu item-dropdown-lateral" aria-labelledby="navbarDropdownMenuLink">
+                        <a asp-controller="Mesas" asp-action="EmAtendimento" class="dropdown-item">Em Atendimento</a>
+                        <a asp-controller="Mesas" asp-action="Disponiveis" class="dropdown-item">Disponíveis</a>
+                        <a asp-controller="Mesas" asp-action="Gerenciamento" class="dropdown-item">Gerenciar Mesas</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="material-icons mr-3 text-primary">inventory_2</span>
+                        Produtos
+                    </a>
+                    <div class="dropdown-menu item-dropdown-lateral" aria-labelledby="navbarDropdownMenuLink">
+                        <a asp-controller="Produtos" asp-action="Index" class="dropdown-item">Todos Produtos</a>
+                        <a asp-controller="Produtos" asp-action="GerenciarItensAdicionais" class="dropdown-item">Gerenciar Itens Adicionais</a>
+                        <a asp-controller="CategoriaProduto" asp-action="Index" class="dropdown-item">Gerenciar Categorias de Produto</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Usuarios" asp-action="Index" class="nav-link text-dark">
+                        <span class="material-icons mr-3 text-primary">group</span>
+                        Usuários
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="FluxoCaixa" asp-action="Index" class="nav-link text-dark">
+                        <span class="material-icons mr-3 text-primary">local_offer</span>
+                        Fluxo de Caixa
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="page-content p-2" id="content">
+        <nav class="navbar navbar-expand-lg bg-primary">
+            <button id="sidebarCollapse" type="button" class="btn bg-white rounded-pill shadow-sm"><span class="material-icons text-dark">menu</span></button>
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="javascript:;">Algum item <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                        Algum menu de configuração
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <main role="main" class="bg-light pt-2 pl-5 pr-5">
+            @RenderBody()
+        </main>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - Restaurante Come Bem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/js/core/jquery.min.js"></script>
+    <script src="~/js/core/popper.min.js"></script>
+    <script src="~/js/core/bootstrap-material-design.min.js"></script>
+    <script src="~/js/plugins/moment.min.js"></script>
+    <script src="~/js/MaterialDesign/material-kit.min.js?v=2.0.4"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+    <script type="text/javascript">
+        $(function () {
+            // Sidebar toggle behavior
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
